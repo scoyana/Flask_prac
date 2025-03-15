@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>게시판</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>게시판</h1>
+    <a href="{{ url_for('create') }}">글 작성</a>
+    <ul>
+      {% for post in posts %}
+      <li>
+        <h2>{{ post.title }}</h2>
+        <p>{{ post.content }}</p>
+        <p>작성 날짜: {{ post.created_at.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+        <a href="{{ url_for('edit', id=post.id) }}">수정</a> |
+        <a href="{{ url_for('delete', id=post.id) }}">삭제</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

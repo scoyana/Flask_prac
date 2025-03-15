@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>글 수정</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <h1>글 수정</h1>
+    <form action="/edit/{{ post.id }}" method="post">
+      <label for="title">제목:</label>
+      <input
+        type="text"
+        name="title"
+        id="title"
+        value="{{ post.title }}"
+        required
+      /><br /><br />
+
+      <label for="content">내용:</label><br />
+      <textarea name="content" id="content" rows="5" required>
+{{ post.content }}</textarea
+      ><br /><br />
+
+      <button type="submit">수정</button>
+    </form>
+    <a href="{{ url_for('index') }}">목록으로</a>
+  </body>
+</html>
